@@ -1,18 +1,15 @@
-
-
-function getquote(){
-var http = require('http')
- var options = {
-        host: 'https:/'/andruxnet-random-famous-quotes.p.mashape.com/'cat=',
-        method: 'GET',
-        headers: {'Quotes': 'node.js'}
-    };
-http.get(options,function(response){
-	response.on('data', console.log)
-
-response.on('error', console.error)
-
-response.setEncoding('utf8')} 
-)};
-    
-    getquote();
+var http = require('http');
+console.log("Trying my http request");
+http.get("http://ip-api.com/json/197.210.25.129", function(res) {
+  var body = '';
+  res.on('data', function(data){
+    body += data;
+  });
+  res.on('end', function() {
+    var parsed = JSON.parse(body);
+    console.log(parsed);
+  });
+})
+.on('error', function(e) {
+  console.error("Got error: " + e.message);
+});
