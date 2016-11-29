@@ -1,15 +1,19 @@
 module.exports = {
  
 
-wordCount: function(string){
-  var strSplit =string.split(" ");
- var empty = ("");
-  if (string ===empty){return 0;}
-     return strSplit.length;
-  },
+words: function (string) {
+    var pattern = /\w+/g,s
+        matchedWords = string.match( pattern );
+    var counts = matchedWords.reduce(function ( count, word ) {
+        if ( count.hasOwnProperty( word ) ) {
+            count[ word ] = count[ word ] + 1;
+        } else {
+            count[ word ] = 1;
+        }
+        return count;
 
-
-
+    }, {} );
+},
 
 
 findMinMax: function(array){
